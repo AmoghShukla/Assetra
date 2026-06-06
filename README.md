@@ -1,67 +1,66 @@
 # Assetra : Enterprise Asset & Operations Management Platform
 
-**Assetra** is a scalable enterprise-grade asset and operations management platform designed to centralize organizational infrastructure workflows including asset tracking, ticket management, user administration, role-based access control, and operational governance.
+**Assetra** is a scalable enterprise-grade asset and operations management platform built to centralize organizational workflows including asset tracking, ticket management, user administration, organization control, and role-based access management.
 
-Modern organizations often struggle with fragmented systems for managing IT assets, employee access, operational requests, and internal issue resolution.
-These disconnected workflows lead to poor visibility, operational inefficiencies, inconsistent access control, and difficulties in maintaining scalable infrastructure processes.
+Modern enterprises often rely on disconnected tools for managing assets, operational requests, employee access, and administrative workflows.
+This fragmentation creates operational inefficiencies, poor visibility, inconsistent permission handling, and difficulties in scaling internal infrastructure systems.
 
-Assetra solves this by introducing a **modular backend-driven management ecosystem** that consolidates asset lifecycle management, permission systems, operational ticketing, and administrative workflows into a unified architecture.
+Assetra solves this problem by introducing a **modular backend-driven operational ecosystem** that unifies enterprise asset management, RBAC workflows, ticket handling, and organizational operations into a single scalable platform.
 
-This is not just an inventory tracker or CRUD dashboard —
-it is a **system-oriented enterprise operations platform** engineered using scalable backend architecture principles, domain-driven modularity, layered separation, and real-world RBAC workflows.
+Rather than functioning as a basic CRUD application, Assetra is designed as a **system-oriented backend infrastructure platform** engineered using layered architecture, modular feature separation, scalable database design, and production-grade backend engineering principles.
 
 ---
 
 # Core Highlights
 
 * **Enterprise Asset Management**
-  Track and manage organizational assets throughout their lifecycle.
+  Track, manage, assign, and monitor organizational assets efficiently.
 
 * **Role-Based Access Control (RBAC)**
-  Granular permission handling for admins, managers, employees, and operational teams.
+  Granular permission-driven workflows for administrators, managers, and employees.
 
 * **Operational Ticketing System**
-  Manage issue reporting, task assignments, and operational workflows.
+  Manage issue reporting, workflow tracking, and operational requests.
 
-* **Organization & User Management**
-  Supports multi-user enterprise structures with scalable user administration.
+* **Organization Management**
+  Supports enterprise organizational structures and user mapping.
 
 * **Authentication & Authorization**
-  Secure access workflows using JWT authentication architecture.
+  JWT-based secure authentication workflows.
 
 * **Feature-Based Modular Architecture**
-  Clean separation of business domains for scalability and maintainability.
+  Scalable project organization with isolated business modules.
 
-* **Scalable Backend Infrastructure**
-  Designed using production-oriented backend engineering practices.
+* **Audit-Oriented Design**
+  Includes audit trail support for enterprise traceability.
 
-* **Audit-Friendly System Design**
-  Structured workflows for operational traceability and accountability.
+* **Scalable Backend Engineering**
+  Designed using production-ready FastAPI architecture patterns.
 
 ---
 
 # System Design Philosophy
 
-Assetra is designed around how real enterprise systems operate internally.
+Assetra is engineered around how enterprise operational systems function in real-world environments.
 
-Typical management systems only focus on:
+Typical management systems focus only on:
 
-* Storing asset data
 * Managing users
+* Storing asset information
 * Basic CRUD operations
 
-Assetra goes beyond that by implementing:
+Assetra extends beyond that by implementing:
 
-* **Permission-driven workflows**
-* **Scalable organization management**
-* **Operational ticket routing**
-* **Structured RBAC architecture**
-* **Business-rule enforcement**
-* **Feature modularization**
-* **Enterprise-grade backend layering**
-* **Maintainable service-oriented architecture**
+* **Permission-based operational workflows**
+* **Role hierarchy management**
+* **Organization-level isolation**
+* **Ticket lifecycle handling**
+* **Scalable feature modularization**
+* **Service-repository architecture**
+* **Audit-friendly backend design**
+* **Enterprise-grade maintainability**
 
-The platform is structured to simulate how enterprise IT operations and infrastructure management systems function in production environments.
+The platform is structured to simulate how modern IT operations and enterprise infrastructure systems function at scale.
 
 ---
 
@@ -75,9 +74,8 @@ The platform is structured to simulate how enterprise IT operations and infrastr
 | Database Migration | Alembic      |
 | Validation         | Pydantic     |
 | Authentication     | JWT          |
-| Caching / Sessions | Redis        |
-| API Testing        | Postman      |
 | Package Management | Poetry / pip |
+| API Testing        | Postman      |
 | Language           | Python       |
 
 ---
@@ -92,32 +90,82 @@ Assetra/
 │   └── script.py.mako
 │
 ├── app/
-│   ├── core/                    # Configuration & constants
-│   ├── database/                # Database connection & session handling
-│   ├── dependencies/            # Dependency injection utilities
-│   ├── exceptions/              # Custom exception handlers
-│   ├── middleware/              # Custom middleware components
-│   ├── models/                  # SQLAlchemy ORM models
-│   ├── modules/                 # Feature-based modules
-│   │   ├── auth/
-│   │   ├── users/
-│   │   ├── organizations/
-│   │   ├── roles/
-│   │   ├── permissions/
-│   │   ├── assets/
-│   │   └── tickets/
+│   ├── main.py
 │   │
-│   ├── repositories/            # Database access layer
-│   ├── schemas/                 # Pydantic schemas
-│   ├── services/                # Business logic layer
-│   ├── utilities/               # Utility/helper functions
-│   └── websocket/               # Real-time communication layer
+│   ├── features/
+│   │   ├── assets/
+│   │   │   ├── controllers.py
+│   │   │   ├── repository.py
+│   │   │   ├── schemas.py
+│   │   │   └── __init__.py
+│   │   │
+│   │   ├── auth/
+│   │   │   ├── controller.py
+│   │   │   ├── repository.py
+│   │   │   ├── schemas.py
+│   │   │   └── __init__.py
+│   │   │
+│   │   ├── organizations/
+│   │   │   ├── controllers.py
+│   │   │   ├── repository.py
+│   │   │   └── schemas.py
+│   │   │
+│   │   ├── role/
+│   │   │   ├── controllers.py
+│   │   │   ├── repository.py
+│   │   │   └── schemas.py
+│   │   │
+│   │   ├── permissions/
+│   │   │   └── repository.py
+│   │   │
+│   │   ├── tickets/
+│   │   │   ├── controllers.py
+│   │   │   ├── repository.py
+│   │   │   ├── schemas.py
+│   │   │   └── __init__.py
+│   │   │
+│   │   ├── users/
+│   │   │   ├── controllers.py
+│   │   │   ├── repository.py
+│   │   │   ├── schemas.py
+│   │   │   └── __init__.py
+│   │   │
+│   │   ├── user_role/
+│   │   │   ├── controllers.py
+│   │   │   ├── repository.py
+│   │   │   └── schemas.py
+│   │   │
+│   │   └── user_organization/
+│   │       ├── controllers.py
+│   │       ├── repository.py
+│   │       └── schema.py
+│   │
+│   ├── models/
+│   │   ├── asset.py
+│   │   ├── asset_assignment.py
+│   │   ├── asset_type.py
+│   │   ├── organization.py
+│   │   ├── permission.py
+│   │   ├── role.py
+│   │   ├── ticket.py
+│   │   ├── user.py
+│   │   └── __init__.py
+│   │
+│   ├── seed/
+│   │   └── permission.py
+│   │
+│   └── utilities/
+│       ├── audit_trail_mixin.py
+│       ├── base.py
+│       ├── config.py
+│       ├── dependencies.py
+│       └── enums.py
 │
 ├── .env
 ├── alembic.ini
-├── main.py
 ├── poetry.lock
 ├── pyproject.toml
+├── run.py
 └── README.md
 ```
 
@@ -125,124 +173,107 @@ Assetra/
 
 # Core Modules
 
-| Module                   | Description                                                         |
-| ------------------------ | ------------------------------------------------------------------- |
-| Authentication Module    | Handles JWT authentication, login workflows, and session management |
-| User Management          | Manages employee accounts and user operations                       |
-| Organization Management  | Supports organization-level structuring and administration          |
-| Role & Permission System | Implements scalable RBAC workflows                                  |
-| Asset Management         | Tracks and manages enterprise assets                                |
-| Ticketing System         | Handles operational requests, issues, and workflow tracking         |
-| Notification System      | Planned support for alerts and event-driven notifications           |
-| Audit & Logging          | Maintains operational traceability and logs                         |
+| Module                    | Description                                      |
+| ------------------------- | ------------------------------------------------ |
+| Authentication Module     | Handles login workflows and JWT token generation |
+| User Management           | Manages employee accounts and operational users  |
+| Organization Management   | Handles enterprise organizational structures     |
+| Role Management           | Implements RBAC workflows and role assignment    |
+| Permission Management     | Controls feature-level access permissions        |
+| Asset Management          | Handles asset lifecycle and tracking             |
+| Ticketing System          | Manages operational issues and workflow tickets  |
+| User-Role Mapping         | Maps users with roles dynamically                |
+| User-Organization Mapping | Supports organization-level access isolation     |
 
 ---
 
 # Business Rules Enforced
 
-* Users can only access features allowed by assigned roles
-* Assets are mapped and managed under organizational structures
-* Permission inheritance is enforced consistently across modules
-* Operational tickets follow structured workflow states
-* Soft deletion preserves audit integrity
-* Authentication-protected routes enforce authorization validation
-* Organizational boundaries isolate data access securely
+* Users can only access features permitted by assigned roles
+* Organizational data access is permission restricted
+* Assets can be assigned and tracked systematically
+* Ticket workflows maintain operational consistency
+* Authentication-protected APIs enforce authorization validation
+* Audit trail support ensures operational traceability
+* Soft deletion patterns preserve enterprise data integrity
 
 ---
 
-# Asset Lifecycle Workflow (Conceptual)
+# Operational Workflow (Conceptual)
 
-The asset management workflow follows:
+The operational workflow follows:
 
-1. Admin creates organizational assets
-2. Assets are categorized and assigned
-3. Authorized users access asset records
-4. Operational tickets can be raised against assets
-5. Ticket workflows move through defined states
-6. System maintains audit visibility for operations
-7. Asset status updates dynamically based on workflow activity
+1. Super Admin creates organizations
+2. Roles and permissions are configured
+3. Users are onboarded into organizations
+4. Assets are created and assigned
+5. Employees interact with assigned resources
+6. Operational issues generate tickets
+7. Tickets move through workflow states
+8. Admins monitor organizational operations
 
 ---
 
 # Features
 
-* JWT-based authentication
-* Role-based access control
-* Multi-role permission handling
+* JWT Authentication
+* Role-Based Access Control (RBAC)
+* Organization management
 * Enterprise asset tracking
 * Operational ticket management
-* Organization management
-* Feature-based architecture
-* RESTful API design
-* Structured exception handling
+* Permission handling
+* Audit trail support
+* Layered backend architecture
+* Feature-based modular design
+* RESTful API development
 * PostgreSQL integration
-* Scalable service layer
-* Soft delete support
-* Audit-ready workflows
-* Redis integration support
-* WebSocket-ready architecture
+* Structured exception handling
+* Scalable repository-service architecture
 
 ---
 
 # API Architecture
 
-Assetra follows a **layered feature-oriented backend architecture**:
+Assetra follows a **feature-oriented layered architecture**:
 
 ```text
 Client Request
       ↓
-FastAPI Router Layer
+FastAPI Controller Layer
       ↓
-Service Layer (Business Logic)
+Service / Repository Layer
       ↓
-Repository Layer (Database Access)
+SQLAlchemy ORM Layer
       ↓
 PostgreSQL Database
 ```
 
-Each module maintains separation between:
-
-* Routers
-* Services
-* Schemas
-* Repositories
-* Models
-* Business rules
-
 This architecture ensures:
 
 * Scalability
-* Cleaner maintenance
-* Easier testing
-* Better modularity
-* Independent feature expansion
-* Production-oriented engineering standards
+* Maintainability
+* Separation of concerns
+* Cleaner testing
+* Independent module development
+* Easier feature expansion
 
 ---
 
-# Authentication Architecture
+# Authentication Workflow
 
 Assetra uses JWT-based authentication workflows:
 
 ```text
 User Login
     ↓
-JWT Access Token Generation
+JWT Token Generation
     ↓
-Protected API Access
+Protected Route Access
     ↓
-Role & Permission Validation
+Permission Validation
     ↓
 Authorized Resource Access
 ```
-
-Planned enhancements include:
-
-* Refresh tokens
-* OTP-based authentication
-* Redis-backed token blacklisting
-* Session tracking
-* Multi-device login handling
 
 ---
 
@@ -296,7 +327,6 @@ DATABASE_URL=postgresql://username:password@localhost:5432/assetra
 SECRET_KEY=your_secret_key
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
-REDIS_URL=redis://localhost:6379
 ```
 
 ---
@@ -312,58 +342,57 @@ alembic upgrade head
 ## 6. Run the Application
 
 ```bash
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
 
 ---
 
-# Example Operational Workflow
+# Example Enterprise Workflow
 
-1. Super Admin creates organization
-2. Admin configures roles & permissions
+1. Super Admin creates an organization
+2. Admin defines roles and permissions
 3. Employees are onboarded
-4. Assets are registered into the system
-5. Users interact with assigned assets
-6. Operational issues generate tickets
-7. Tickets move through workflow states
-8. Admins monitor operational activities
+4. Assets are registered
+5. Assets are assigned to users
+6. Operational tickets are created
+7. Tickets move through workflow stages
+8. Admins monitor operational activity
 
 ---
 
 # Future Enhancements
 
-* OTP-based passwordless authentication
-* Real-time updates using WebSockets
-* Redis-based session invalidation
-* Asset analytics dashboard
-* AI-powered ticket categorization
-* Email notification workflows
-* Event-driven architecture integration
-* Activity timeline tracking
-* Multi-tenant organization isolation
-* File attachment support
-* Elasticsearch-based search system
+* Redis integration
+* Refresh token workflows
+* OTP/passwordless authentication
+* WebSocket-based real-time updates
+* Notification engine
+* File upload support
+* Audit logging dashboard
+* Elasticsearch-powered searching
+* Multi-tenant support
 * Kubernetes deployment support
 * CI/CD pipeline integration
+* AI-powered ticket categorization
 
 ---
 
 # Why Assetra?
 
-Assetra is not just an asset management API.
+Assetra is not just an asset management backend.
 
-It is an attempt to engineer a scalable backend system that reflects how real enterprise operational ecosystems function internally.
+It is an attempt to engineer a scalable enterprise operational platform that reflects how modern organizations manage assets, permissions, workflows, and internal operations.
 
 The project demonstrates:
 
 * Backend system design
 * RBAC implementation
-* Enterprise architecture patterns
-* Modular backend engineering
-* Database modeling
-* Operational workflow handling
 * Scalable FastAPI architecture
-* Clean service-repository separation
+* Enterprise workflow engineering
+* Database modeling
+* Feature-based architecture
+* Service-repository patterns
+* Production-oriented backend practices
 
 ---
 
@@ -400,6 +429,7 @@ This project is open source and available under the **MIT License**.
 
 # Final Note
 
-Assetra is built to simulate how modern enterprise infrastructure systems manage assets, permissions, operational workflows, and organizational processes at scale.
+Assetra is designed to reflect how enterprise infrastructure systems operate internally —
+from RBAC implementation and organizational control to asset lifecycle management and operational workflow handling.
 
-From RBAC implementation and modular backend architecture to scalable service layers and operational workflow management, the project is designed to reflect real-world backend engineering practices used in enterprise platforms.
+The project focuses not only on functionality, but also on scalable backend engineering, modular system design, maintainability, and production-grade architectural practices.
